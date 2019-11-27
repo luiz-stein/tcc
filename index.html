@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/w3.css" type="text/css" />
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon" />
+    <title>TCC Smart Contracts</title>
+</head>
+<body>
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-gray w3-wide w3-padding w3-card">
+
+            <span class="w3-bar-item w3-text-dark"><b>TCC Smart Contracts</b></span>
+            <div class="w3-right w3-hide-small">
+                <span class="w3-bar-item w3-text-dark">Alunos:</span>
+                <button onclick="document.getElementById('iddaniel').style.display='block'" class="w3-bar-item w3-button w3-hover-light-green"><b>Daniel</b></button>
+                <button onclick="document.getElementById('idluiz').style.display='block'" class="w3-bar-item w3-button w3-hover-light-green"><b>Luiz</b></button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Definicao do Contrato -->
+    <section class="w3-padding-32 w3-border-bottom">
+        <h3 class="w3-border-bottom w3-padding-16 w3-center w3-light-gray w3-text-green">Definição do Smart Contract</h3>
+        <p class="w3-container">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <!--<div class="w3-border-bottom w3-light-gray"></div>-->
+    </section>
+
+    <!-- Processo 1 -->
+
+    <section>
+        <h3 class="w3-border-bottom w3-padding-16 w3-center w3-text-orange">Processo 1</h3>
+
+        <form class="w3-container w3-light-grey">
+            <div class="w3-section">
+                <label><b>Nome</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Informe seu nome" name="nome" required>
+                <label><b>Endereço da Carteira</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Informe o endereço da carteira" name="endereco" required>
+                <button class="w3-button w3-green w3-section w3-padding" type="submit">Enviar</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Processo 2 -->
+    <div class="w3-border-bottom w3-light-gray"></div>
+
+    <section>
+        <h3 class="w3-border-bottom w3-padding-16 w3-center w3-text-orange">Processo 2</h3>
+
+        <form class="w3-container w3-light-grey">
+            <div class="w3-section">
+                <label><b>Nome</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Informe seu nome" name="nome" required>
+                <label><b>Endereço da Carteira</b></label>
+                <input class="w3-input w3-border" type="text" placeholder="Informe o endereço da carteira" name="endereco" required>
+                <button class="w3-button w3-green w3-section w3-padding" type="submit">Enviar</button>
+            </div>
+        </form>
+        <div class="w3-border-bottom w3-light-gray"></div>
+    </section>
+
+
+    <!-- alunos -->
+    <div id="iddaniel" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('iddaniel').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
+                <!--<img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">-->
+            </div>
+
+            <div class="w3-container">
+                <p class="w3-large w3-center"><b>Daniel Lima</b></p>
+                <div class="w3-border-bottom"></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="idluiz" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('idluiz').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
+                <!--<img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">-->
+            </div>
+
+            <div class="w3-container">
+                <p class="w3-large w3-center"><b>Luiz Henrique Stein</b></p>
+                <div class="w3-border-bottom"></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                   Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- alunos -->
+
+    <div class="w3-border-bottom w3-light-gray"></div>
+    <br />
+    <footer class="w3-gray w3-padding-16">
+        <span class="w3-text-dark"><b>PUC-SP - TCC Smart Contracts</b></span>
+    </footer>
+
+    <script src="../js/sc.js"></script>
+</body>
+</html>
