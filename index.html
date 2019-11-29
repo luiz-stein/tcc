@@ -27,11 +27,20 @@
     <section class="w3-padding-32 w3-border-bottom">
         <h3 class="w3-border-bottom w3-padding-16 w3-center w3-light-gray w3-text-green">Definição do Smart Contract</h3>
         <p class="w3-container">
-            O escrow é um contrato de depósito, que serve como garantia e é muito utilizado para realizar a gestão de riscos 
-            entre duas ou mais partes envolvidas em uma negociação. 
-            Normalmente o escrow é estabelecido através de um contrato ou acordo comercial, 
-            onde essa garantia fica sob responsabilidade de um terceiro, 
-            até que o acordo e condições sejam cumpridas pelas partes do negócio. 
+           O escrow é um contrato de depósito, que serve como garantia e é muito utilizado para realizar a gestão de riscos entre duas ou mais partes envolvidas em uma negociação. 
+
+Normalmente o escrow é estabelecido através de um contrato ou acordo comercial, onde essa garantia fica sob responsabilidade de um terceiro, até que o acordo e condições sejam cumpridas pelas partes do negócio. 
+
+Em nosso Smartcontract, eliminamos a figura do terceiro, simulando uma operação, baseada nas seguintes premissas:
+
+1)	Caio está vendendo um Produto a Tício, pelo valor de 1X;
+2)	Caio, então, deposita 2X, para mostrar que ele é confiável;
+3)	Tício, confirma que quer comprar o produto e, também, deposita 2X;
+4)	O smartcontract então conterá o equivalente a 4X;
+5)	Caio, então, envia o produto;
+6)	Quando Tício receber o produto e confirmar este;
+7)	O smartcontract, automaticamente transfere 1X para Ticio e 3X para Caio (devolve o saldo de 1x de Tício e transfere para Caio 1X, do pagamento pela compra do produto e devolve, ainda, os 2X que havia transferido para garantia do contrato. 
+
         </p>
         <!--<div class="w3-border-bottom w3-light-gray"></div>-->
     </section>
