@@ -13,7 +13,10 @@
     <div class="w3-top">
         <div class="w3-bar w3-gray w3-wide w3-padding">
 
-            <span class="w3-bar-item w3-text-dark"><b>TCC Smart Contracts</b></span>
+            <div class="w3-bar-item w3-text-dark"> 
+                <img src="img/logo-puc.jpg" class="w3-image" alt="PUC-SP" style="width:18%">
+                 <b>TCC Smart Contracts</b>
+            </div>
             <div class="w3-right w3-hide-small">
                 <span class="w3-bar-item w3-text-dark">Alunos:</span>
                 <button onclick="document.getElementById('iddaniel').style.display='block'" class="w3-bar-item w3-button w3-hover-light-green"><b>Daniel</b></button>
@@ -24,61 +27,90 @@
     </div>
 
     <!-- Definicao do Contrato -->
-    <section class="w3-padding-32 w3-border-bottom">
+    <section class="w3-padding-64 w3-border-bottom">
         <h3 class="w3-border-bottom w3-padding-16 w3-center w3-light-gray w3-text-green">Definição do Smart Contract</h3>
-        <p class="w3-container">
-           O escrow é um contrato de depósito, que serve como garantia e é muito utilizado para realizar a gestão de riscos entre duas ou mais partes envolvidas em uma negociação. 
+        <div class="w3-container">
+            <div class="w3-panel w3-leftbar w3-rightbar w3-border-cyan">
+                <p>
+                    O escrow é um contrato de depósito, que serve como garantia e é muito utilizado para realizar a gestão de riscos entre duas ou mais partes envolvidas em uma negociação.
+                    Normalmente o escrow é estabelecido através de um contrato ou acordo comercial, onde essa garantia fica sob responsabilidade de um terceiro, até que o acordo e condições sejam cumpridas pelas partes do negócio.
+                    Em nosso Smartcontract, eliminamos a figura do terceiro, simulando uma operação, baseada nas seguintes premissas:
+                </p>
+            </div>            
 
-         Normalmente o escrow é estabelecido através de um contrato ou acordo comercial, onde essa garantia fica sob responsabilidade de um terceiro, até que o acordo e condições sejam cumpridas pelas partes do negócio. 
-         Em nosso Smartcontract, eliminamos a figura do terceiro, simulando uma operação, baseada nas seguintes premissas:            
-        </p>
-        <p class="w3-container">     
-            
+            <div class="w3-panel w3-light-gray w3-leftbar w3-rightbar w3-border-cyan">
+                <p>
+                    1)	Caio está vendendo um Produto a Tício, pelo valor de 1X;<br />
+                    2)	Caio, então, deposita 2X, para mostrar que ele é confiável;<br />
+                    3)	Tício, confirma que quer comprar o produto e, também, deposita 2X;<br />
+                    4)	O smartcontract então conterá o equivalente a 4X;<br />
+                    5)	Caio, então, envia o produto;<br />
+                    6)	Quando Tício receber o produto e confirmar este;<br />
+                    7)	O smartcontract, automaticamente transfere 1X para Ticio e 3X para Caio (devolve o saldo de 1x de Tício e transfere para Caio 1X, do pagamento pela compra do produto e devolve, ainda, os 2X que Caio que havia transferido para garantia do contrato.
+                    <br/>
+                    <br/>
+                    <i> OBS: Não serão tratadas as excessões, como devolução do produto por arrependimento</i>
 
-1)	Caio está vendendo um Produto a Tício, pelo valor de 1X;
-2)	Caio, então, deposita 2X, para mostrar que ele é confiável;
-3)	Tício, confirma que quer comprar o produto e, também, deposita 2X;
-4)	O smartcontract então conterá o equivalente a 4X;
-5)	Caio, então, envia o produto;
-6)	Quando Tício receber o produto e confirmar este;
-7)	O smartcontract, automaticamente transfere 1X para Ticio e 3X para Caio (devolve o saldo de 1x de Tício e transfere para Caio 1X, do pagamento pela compra do produto e devolve, ainda, os 2X que havia transferido para garantia do contrato. 
-
-        </p>
-        <!--<div class="w3-border-bottom w3-light-gray"></div>-->
+                </p>
+            </div>
+        </div>
     </section>
 
-    <!-- Processo 1 -->
+    <!-- Processo Vendedor -->
 
     <section>
-        <h3 class="w3-border-bottom w3-padding-16 w3-center w3-text-orange">Processo 1</h3>
+        <h3 class="w3-padding-16 w3-center w3-text-orange">Garantia do Vendedor (Caio) para o Smart Contract</h3>
 
-        <form class="w3-container w3-light-grey">
-            <div class="w3-section">
-                <label><b>Nome</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Informe seu nome" name="nome" required>
-                <label><b>Endereço da Carteira</b></label>
-                <input class="w3-input w3-border" type="text" placeholder="Informe o endereço da carteira" name="endereco" required>
-                <button class="w3-button w3-green w3-section w3-padding" type="submit">Enviar</button>
+        <div class="w3-container w3-light-grey w3-border-top">
+            <div class="w3-section w3-center w3-text-blue">
+                <div>
+                    <label><b>Produto Solicitado por Tício: <i>Vinho Langhe Nebbiolo Mauro Molino (itália)</i> </b></label>
+                </div>
+                <div>
+                    <label><b>Valor do Produto: 1 ether</b></label>
+                </div>
+                <div>
+                    <label><b>Valor a ser Transferido como Garantia: 2 ethers</b></label>
+                </div>
+                <div class="w3-padding-16">
+                    <label><b>Garantia foi efetuada ?:</b></label>
+                    <label id="status_garantia_venda" class="w3-text-red"><b>Não</b></label>
+                </div> 
+                <div class="w3-center">
+                    <button id="button_garantia_vendedor" class="w3-button w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id-garantia-vendedor').style.display = 'block'">Efetuar Garantia do Vendedor</button>
+                </div class="w3-center">
+
             </div>
-        </form>
+        </div>
     </section>
 
-    <!-- Processo 2 -->
+    <!-- Processo Comprador -->
     <div class="w3-border-bottom w3-light-gray"></div>
 
     <section>
-        <h3 class="w3-border-bottom w3-padding-16 w3-center w3-text-orange">Processo 2</h3>
+        <h3 class="w3-padding-16 w3-center w3-text-orange">Garantia do Comprador (Tíssio) para o Smart Contract</h3>
 
-        <form class="w3-container w3-light-grey">
-            <div class="w3-section">
-                <label><b>Nome</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Informe seu nome" name="nome" required>
-                <label><b>Endereço da Carteira</b></label>
-                <input class="w3-input w3-border" type="text" placeholder="Informe o endereço da carteira" name="endereco" required>
-                <button class="w3-button w3-green w3-section w3-padding" type="submit">Enviar</button>
+        <div class="w3-container w3-light-grey w3-border-top">
+            <div class="w3-section w3-center w3-text-blue">
+                <div>
+                    <label><b>Produto que Tício comprará: <i>Vinho Langhe Nebbiolo Mauro Molino (itália)</i> </b></label>
+                </div>
+                <div>
+                    <label><b>Valor do Produto: 1 ether</b></label>
+                </div>
+                <div>
+                    <label><b>Valor a ser Transferido como Garantia: 2 ethers</b></label>
+                </div>
+                <div class="w3-padding-16">
+                    <label><b>Garantia foi efetuada ?:</b></label>
+                    <label id="status_garantia_compra" class="w3-text-red"><b>Não</b></label>
+                </div>
+                <div class="w3-center">
+                    <button id="button_garantia_comprador" class="w3-button w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id-garantia-comprador').style.display = 'block'">Efetuar Garantia do Comprador</button>
+                </div>
+
             </div>
-        </form>
-        <div class="w3-border-bottom w3-light-gray"></div>
+        </div>
     </section>
 
 
@@ -120,14 +152,100 @@
             </div>
         </div>
     </div>
-    <!-- alunos -->
+    <!-- fim alunos -->
+
+    <!-- garantia do vendedor -->
+    
+    <div id="id-garantia-vendedor" class="w3-modal">
+
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('id-garantia-vendedor').style.display = 'none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
+                <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+            </div>
+
+            <div class="w3-container">
+                <div class="w3-section">
+                    <div class="w3-margin-bottom">
+                        <label><b>Produto</b>:Vinho Langhe Nebbiolo Mauro Molino (itália)</label>
+                    </div>
+
+                    <div class=" w3-border-bottom"></div>
+
+                    <div class="w3-margin-bottom w3-padding-16">
+                        <label><b>Enviar </b>: 2 ethers como garantia</label>
+                    </div>
+                    
+                    <div class="w3-container w3-center w3-padding-16">
+
+                        <button onclick="enviarGarantiaVenda()" class="w3-button w3-green w3-center" type="submit">Enviar Garantia</button>
+                        <button onclick="document.getElementById('id-garantia-vendedor').style.display = 'none'" type="button" class="w3-button w3-red"> &nbsp; Não Enviar &nbsp;</button>
+
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="w3-border-top w3-light-gray"></div>
+            <div class="w3-container w3-padding-16">
+                <label id="label_mensagem_garantia_vendedor"> &nbsp;</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- fim garantia do vendedor -->
+
+    <!-- garantia do comprador -->
+
+    <div id="id-garantia-comprador" class="w3-modal">
+
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('id-garantia-comprador').style.display = 'none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
+                <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+            </div>
+
+            <div class="w3-container">
+
+                <div class="w3-section">
+                    <div class="w3-margin-bottom">
+                        <label><b>Produto Comprado</b>:Vinho Langhe Nebbiolo Mauro Molino (itália)</label>
+                    </div>
+
+                    <div class=" w3-border-bottom"></div>
+
+                    <div class="w3-margin-bottom w3-padding-16">
+                        <label><b>Enviar </b>: 2 ethers como garantia</label>
+                    </div>
+
+                    <div class="w3-container w3-center w3-padding-16">
+
+                        <button onclick="enviarGarantiaCompra()" class="w3-button w3-green w3-center" type="submit">Enviar Garantia</button>
+
+                        <button onclick="document.getElementById('id-garantia-comprador').style.display = 'none'" type="button" class="w3-button w3-red"> &nbsp; Não Enviar &nbsp;</button>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="w3-border-top w3-light-gray"></div>
+            <div class="w3-container w3-padding-16">
+                <label id="label_mensagem_garantia_vendedor"> &nbsp;</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- fim garantia do comprador -->
 
     <div class="w3-border-bottom w3-light-gray"></div>
-    <br />
+    
     <footer class="w3-gray w3-padding-16">
         <span class="w3-text-dark"><b>PUC-SP - TCC Smart Contracts</b></span>
     </footer>
 
-    <script src="../js/sc.js"></script>
+    <script src="js/sc.js"></script>
 </body>
 </html>
