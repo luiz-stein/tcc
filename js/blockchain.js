@@ -1,5 +1,5 @@
 //funcoes javascript e integracao solidity
-var enderecoContrato = "0x4E71baAbd6A8AbF4E2fA07A966E37B7066e57e5d";
+var enderecoContrato = "0x8998575aA0FE0010bEEcFDb2149f33891cA2317A";
 var provider = new ethers.providers.Web3Provider(web3.currentProvider);
 ethereum.enable();
 var signer = provider.getSigner();
