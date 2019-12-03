@@ -114,15 +114,45 @@
         </div>
     </section>
 
+    <!-- Processo Encerrar -->
+
+    <section>
+        <h3 class="w3-padding-16 w3-center w3-text-orange">Encerrar o Smart Contract</h3>
+
+        <div class="w3-container w3-light-grey w3-border-top">
+            <div class="w3-section w3-center w3-text-blue">
+                <div>
+                    <label><b>Produto Solicitado por Tício: <i>Vinho Langhe Nebbiolo Mauro Molino (itália)</i> </b></label>
+                </div>
+                <div>
+                    <label><b>Valor do Produto: 1 gwei</b></label>
+                </div>
+                <div>
+                    <label><b>Valor Transferido como Garantia: 2 gwei</b></label>
+                </div>
+                <div class="w3-padding-16">
+                    <label><b>Contrato Encerrado ?:</b></label>
+                    <label id="status_encerrado" class="w3-text-red"><b>Não</b></label>
+                </div>
+                <div class="w3-center">
+                    <button id="button_encerrar" class="w3-button w3-green w3-section w3-padding" type="submit" onclick="document.getElementById('id-encerrar').style.display = 'block'">Encerrar o Contrato</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 
     <!-- alunos -->
-    <div id="iddaniel" class="w3-modal">
+    <!--<img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">-->
+
+    <!--<div id="iddaniel" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
             <div class="w3-center">
                 <br>
                 <span onclick="document.getElementById('iddaniel').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
-                <!--<img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">-->
+
             </div>
 
             <div class="w3-container">
@@ -142,7 +172,7 @@
             <div class="w3-center">
                 <br>
                 <span onclick="document.getElementById('idluiz').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
-                <!--<img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">-->
+
             </div>
 
             <div class="w3-container">
@@ -154,8 +184,9 @@
                 </p>
             </div>
         </div>
-    </div>
-    <!-- fim alunos -->
+    </div>-->
+
+    <!-- fim alunos-->
     <!-- garantia do vendedor -->
 
     <div id="id-garantia-vendedor" class="w3-modal">
@@ -182,7 +213,7 @@
 
                     <div class="w3-container w3-center w3-padding-16">
 
-                        <button onclick="enviarGarantiaVenda()" class="w3-button w3-green w3-center" type="submit">Enviar Garantia</button>
+                        <button onclick="encerrarContrato()" class="w3-button w3-green w3-center" type="submit">Enviar Garantia</button>
                         <button onclick="document.getElementById('id-garantia-vendedor').style.display = 'none'" type="button" class="w3-button w3-red"> &nbsp; Não Enviar &nbsp;</button>
 
                     </div>
@@ -240,6 +271,43 @@
     </div>
 
     <!-- fim garantia do comprador -->
+    <!-- encerrar -->
+
+    <div id="id-encerrar" class="w3-modal">
+
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('id-encerrar').style.display = 'none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">&times;</span>
+                <img src="img/vinho.jpg" alt="Vinho" style="width:30%" class="w3-circle w3-margin-top">
+            </div>
+
+            <div class="w3-container">
+
+                <div class="w3-section">
+                    <div class="w3-margin-bottom">
+                        <label><b>Encerrar o Contrato do Produto</b>:Vinho Langhe Nebbiolo Mauro Molino (itália)</label>
+                    </div>
+
+                    <div class=" w3-border-bottom"></div>
+
+                    <div class="w3-container w3-center w3-padding-16">
+
+                        <button onclick="encerrarContrato()" class="w3-button w3-green w3-center" type="submit"> &nbsp; Encerrar &nbsp;</button>
+
+                        <button onclick="document.getElementById('id-encerrar').style.display = 'none'" type="button" class="w3-button w3-red">Não Encerrar</button>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="w3-border-top w3-light-gray"></div>
+
+        </div>
+    </div>
+
+    <!-- fim garantia do comprador -->
 
     <div class="w3-border-bottom w3-light-gray"></div>
 
@@ -252,8 +320,5 @@
     </script>
     <script src="js/abi.js"></script>
     <script src="js/blockchain.js"></script>
-    <script>
-        getContractBalance();
-    </script>
 </body>
 </html>
