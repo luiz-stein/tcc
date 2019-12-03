@@ -1,9 +1,10 @@
 //funcoes javascript e integracao solidity
 var enderecoContrato = "0xaA84710Cb64e37719c86Cb6dD8f44584c6A75a49";
 var provider = new ethers.providers.Web3Provider(web3.currentProvider);
+ethereum.enable();
 var signer = provider.getSigner();
 var contract = new ethers.Contract(enderecoContrato, contractEscrow, signer);
-ethereum.enable();
+
 
 function enviarGarantiaVenda()
 {
