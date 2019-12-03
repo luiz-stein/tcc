@@ -1,47 +1,80 @@
-pragma solidity >=0.5.12;
+﻿pragma solidity >=0.5.12;
 
-contract Escrow {
+contract Escrow
+{
+    address payable private addressComprador; 
+    address payable private addressVendedor;
     
-    address payable public comprador; 
-    address payable public vendedor;
-    uint256 public preco;
-    bool public entregue;  
+    bool public produtoFoiEnviado = false;
+    bool public garantiaVendedorFoiFeita = false;
+    bool public garantiaCompradorFoiFeita = false;
     
-    constructor (address payable novo_comprador, address payable novo_vendedor, uint256 novo_preco) public {
-        comprador = novo_comprador;
-        vendedor = novo_vendedor;
-        preco = novo_preco;
-        entregue = false;
+    string public descricaoDoProduto;
+    
+    uint256 public valorDoProduto;
+    uint256 public valorDevolvidoComprador;
+    uint256 public valorDevolvidoVendedor;
+    
+    constructor(address payable novo_comprador, string memory descricao_do_produto, uint256 valor_do_produto ) public 
+    {
+        addressVendedor = msg.sender;
+        addressComprador = novo_comprador;
+        
+        descricaoDoProduto = descricao_do_produto;
+        valorDoProduto = valor_do_produto;
     }
+    
+    // garantias
+    
+    function DepositarGarantiaVendedor() payable public produtoFoiEntregueEPago
+    {
+        //O deposito do vendedor requer estes pre-requisitos, sendo que o comprador devera se manifestar primeiro.
+        // a garantia ja vem conferida na propria interface do usuario no site
+        
+        require (addressVendedor == msg.sender, "Quem esta tentando depositar a garantia nao é o vendedor");
+        require( garantiaVendedorFoiFeita == false,"A garantia do vendedor ja foi feita");
+        require( garantiaCompradorFoiFeita,"A garantia do comprador não foi feita");
 
-    function pagamento () payable public {
-        //O produto pode não ter sido entregue ainda
-        require (!entregue, "O Produto foi pago e entregue ");
-        
-        //Quem está enviando deve ser o comprador
-        require (comprador == msg.sender, "Quem esta tentando pagar nao é o comprador");
-        
-        //O valor enviado deve ser igual ao preço
-        require (msg.value == preco, "Valor está diferente do preco");
-
-        //entrega produto para o comprador
-        entregue = true;
-        
-                
-        //transfere valor para o vendedor
-        if (preco > 0) {
-            address(vendedor).transfer(msg.value);
-        }
-                
+        garantiaVendedorFoiFeita = true;
     } 
     
-    function definirPartes (address payable _comprador, address payable _vendedor, uint256 _preco) public {
-        //Só pode reiniciar se o produto já foi entregue
-        require (entregue, "Em andamento, não é possível alterar"); 
+    function DepositarGarantiaComprador() payable public produtoFoiEntregueEPago
+    {
+        // O deposito do comprador requer estes pre-requisitos
+        // a garantia ja vem conferida na propria interface do usuario no site
         
-        comprador = _comprador;
-        vendedor = _vendedor;
-        preco = _preco;
-        entregue = false;
+        require (addressComprador == msg.sender, "Quem esta tentando depositar a garantia nao é o comprador");
+        require( garantiaCompradorFoiFeita == false,"A garantia do comprador ja foi feita");
+
+        garantiaCompradorFoiFeita = true;
+    } 
+    
+    // encerramento do contrato
+    
+    function EncerrarCompra() payable public produtoFoiEntregueEPago
+    {
+        require (addressComprador == msg.sender, "Somente o comprador podera encerrar a compra");
+        require( garantiaVendedorFoiFeita,"A garantia do vendedor nao foi feita");
+        require( garantiaCompradorFoiFeita,"A garantia do comprador nao foi feita");
+        
+        valorDevolvidoVendedor = (address(this).balance / 2) + valorDoProduto;
+        addressVendedor.transfer( (address(this).balance / 2) + valorDoProduto );
+        
+        valorDevolvidoComprador = address(this).balance;
+        addressComprador.transfer( address(this).balance );
+        
+        produtoFoiEnviado = true;
     }
+    
+    function SaldoDoContrato() view public returns(uint256)
+    {
+        return address(this).balance;
+    }
+    
+    modifier produtoFoiEntregueEPago
+    {
+        require(produtoFoiEnviado == false, "O Produto foi pago e entregue");
+        _;
+    }
+
 } 
