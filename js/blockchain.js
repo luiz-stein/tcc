@@ -74,6 +74,7 @@ function enviarGarantiaCompra()
          console.error(err);
         document.getElementById('status_garantia_compra').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
         document.getElementById('id-garantia-comprador').style.display = 'none';
+           
     })
 }
 
@@ -84,6 +85,7 @@ function encerrarContrato()
    .then( (resultFromContract) => {
      console.log("encerrarcompra- result is", resultFromContract);
      document.getElementById('status_encerrado').innerHTML = "<b>Contato Encerrado</b>";
+     document.getElementById('id-encerrado').style.display = 'none';  
    
 })
 .catch( (err) => {
