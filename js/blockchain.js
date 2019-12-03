@@ -8,66 +8,72 @@ var contract = new ethers.Contract(enderecoContrato, contractEscrow, signer);
 
 function enviarGarantiaVenda()
 {
-    document.getElementById('status_garantia_venda').innerHTML = "<b>Transacao enviada ....</b>";;
-        var additionalSettings = {
-            value: ethers.utils.parseUnits("200000000", 'wei')
-        }; 
-        
-        contract.DepositarGarantiaVendedor(additionalSettings)
-        .then( (tx) => {
-            console.log("executePayment - Transaction ", tx);   
-    document.getElementById('status_garantia_venda').innerHTML = "<b>Aguardando resutado ...</b>";;
-        tx.wait()
-        .then( (resultFromContract) => {
-            console.log("executePayment - the result was ", resultFromContract);
-    document.getElementById('status_garantia_venda').innerHTML = "<b>Valor transferido da Garantia</b>";
-    document.getElementById('id-garantia-vendedor').style.display = 'none';
-    })        
-    .catch( (err) => {
-        console.error("executePayment - after tx being mint");
-    console.error(err);
-    document.getElementById('status_garantia_venda').innerHTML = "<b>Erro ao transferir a Garantia</b>" +" "+ err.message;
-    document.getElementById('id-garantia-vendedor').style.display = 'none';
-    })
-    })
-        .catch( (err) => {
-         console.error("executePayment - tx has been sent");
-         console.error(err);
-    document.getElementById('status_garantia_venda').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
-    document.getElementById('id-garantia-vendedor').style.display = 'none';
-    })
-    
+    document.getElementById('status_garantia_venda').innerHTML = "<b>Transacao enviada ....</b>";
+    var additionalSettings = 
+    {
+        value: ethers.utils.parseUnits("200000000", 'wei')
+    };
+
+    contract.DepositarGarantiaVendedor(additionalSettings)
+        .then((tx) => 
+        {
+            console.log("executePayment - Transaction ", tx);
+            document.getElementById('status_garantia_venda').innerHTML = "<b>Aguardando resutado ...</b>";
+            tx.wait()
+                .then((resultFromContract) => {
+                    console.log("executePayment - the result was ", resultFromContract);
+                    document.getElementById('status_garantia_venda').innerHTML = "<b>Valor transferido da Garantia</b>";
+                    document.getElementById('id-garantia-vendedor').style.display = 'none';
+                })
+                .catch((err) => {
+                    console.error("executePayment - after tx being mint");
+                    console.error(err);
+                    document.getElementById('status_garantia_venda').innerHTML = "<b>Erro ao transferir a Garantia</b>" + " " + err.message;
+                    document.getElementById('id-garantia-vendedor').style.display = 'none';
+                })
+        })
+        .catch((err) => {
+            console.error("executePayment - tx has been sent");
+            console.error(err);
+            document.getElementById('status_garantia_venda').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
+            document.getElementById('id-garantia-vendedor').style.display = 'none';
+        })
+
 }
 
 function enviarGarantiaCompra()
 {
     document.getElementById('status_garantia_compra').innerHTML = "<b>Transacao enviada ....</b>";;
-        var additionalSettings = {
+        var additionalSettings = 
+        {
             value: ethers.utils.parseUnits("200000000", 'wei')
         }; 
     
         contract.DepositarGarantiaVendedor(additionalSettings)
-        .then( (tx) => {
+        .then( (tx) => 
+        {
             console.log("executePayment - Transaction ", tx);   
-    document.getElementById('status_garantia_compra').innerHTML = "<b>Aguardando resutado ...</b>";;
-        tx.wait()
-        .then( (resultFromContract) => {
-            console.log("executePayment - the result was ", resultFromContract);
-    document.getElementById('status_garantia_compra').innerHTML = "<b>Valor transferido da Garantia</b>";
-    document.getElementById('id-garantia-comprador').style.display = 'none';
-    })        
-    .catch( (err) => {
-        console.error("executePayment - after tx being mint");
-    console.error(err);
-    document.getElementById('status_garantia_compra').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
-    document.getElementById('id-garantia-comprador').style.display = 'none';
-    })
+            document.getElementById('status_garantia_compra').innerHTML = "<b>Aguardando resutado ...</b>";;
+            tx.wait()
+        .then( (resultFromContract) => 
+        {
+                console.log("executePayment - the result was ", resultFromContract);
+                document.getElementById('status_garantia_compra').innerHTML = "<b>Valor transferido da Garantia</b>";
+                document.getElementById('id-garantia-comprador').style.display = 'none';
+        })        
+        .catch( (err) => 
+        {
+            console.error("executePayment - after tx being mint");
+            console.error(err);
+            document.getElementById('status_garantia_compra').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
+            document.getElementById('id-garantia-comprador').style.display = 'none';
+        })
     })
         .catch( (err) => {
          console.error("executePayment - tx has been sent");
          console.error(err);
-    document.getElementById('status_garantia_compra').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
-    document.getElementById('id-garantia-comprador').style.display = 'none';
+        document.getElementById('status_garantia_compra').innerHTML = "<b>Erro ao transferir a Garantia</b>" + err.message;
+        document.getElementById('id-garantia-comprador').style.display = 'none';
     })
 }
 
@@ -87,5 +93,5 @@ function encerrarContrato()
     alert("After you give the permission we are going to reload the page");
     document.getElementById('status_encerrado').innerHTML = "<b>Contato Encerrado</b>" + err.message;
     document.location = "index.html";
-});
+})
 }
