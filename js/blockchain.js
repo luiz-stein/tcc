@@ -10,6 +10,23 @@ function enviarGarantiaVenda()
     document.getElementById('id-garantia-vendedor').style.display = 'none'
 }
 
+function getContractBalance() {    
+    
+    console.log("getContractBalance - submitting the request");     
+    contractSaldoDoContrato()
+    .then( (resultFromContract) => {
+        console.log("getContractBalance - result is", resultFromContract);
+        
+    })
+    .catch( (err) => {
+        console.error(err);
+        alert("A screen will be load asking to allow this page to connect with your Ethereum account.\nPlease give this permission to proceed.\nOr if you don't have an Ethereum account please install Metamask");
+        ethereum.enable();
+        alert("After you give the permission we are going to reload the page");
+        document.location = "index.html";
+    });
+}
+
 function enviarGarantiaCompra()
 {
     var additionalSettings = 
@@ -20,7 +37,7 @@ function enviarGarantiaCompra()
         .then( (tx) => 
          {
                 console.log("executePayment - Transaction ", tx);   
-                document.getElementById('status_garantia_compra').innerHTML = "Aguardando a transaÁ„o de garantia do comprador ...";
+                document.getElementById('status_garantia_compra').innerHTML = "Aguardando a transa√ß√£o de garantia do comprador ...";
                 tx.wait()
                 .then( (resultFromContract) => 
                 {
@@ -32,14 +49,14 @@ function enviarGarantiaCompra()
                 {
                     console.error("executePayment - after tx being mint");
                     console.error(err);
-                    document.getElementById('status_garantia_compra').innerHTML = "<b>Erro. Garantia n„o transferida</b>";
+                    document.getElementById('status_garantia_compra').innerHTML = "<b>Erro. Garantia n√£o transferida</b>";
                     document.getElementById('id-garantia-comprador').style.display = 'none';
                 })
          })
        .catch( (err) => {
                 console.error("executePayment - tx has been sent");
                 console.error(err);
-                document.getElementById('status_garantia_compra').innerHTML = "<b>Erro. Garantia n„o transferida</b>";
+                document.getElementById('status_garantia_compra').innerHTML = "<b>Erro. Garantia n√£o transferida</b>";
                 document.getElementById('id-garantia-comprador').style.display = 'none';
        })
 }
