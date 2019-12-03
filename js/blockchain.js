@@ -11,7 +11,7 @@ function enviarGarantiaVenda()
     document.getElementById('status_garantia_venda').innerHTML = "<b>Transacao enviada ....</b>";
     var additionalSettings = 
     {
-        value: ethers.utils.parseUnits("200000000", 'wei')
+        value: 200000000
     };
 
     contract.DepositarGarantiaVendedor(additionalSettings)
@@ -46,7 +46,7 @@ function enviarGarantiaCompra()
     document.getElementById('status_garantia_compra').innerHTML = "<b>Transacao enviada ....</b>";;
         var additionalSettings = 
         {
-            value: ethers.utils.parseUnits("200000000", 'wei')
+            value: 200000000
         }; 
     
         contract.DepositarGarantiaVendedor(additionalSettings)
