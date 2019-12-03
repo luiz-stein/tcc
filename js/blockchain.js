@@ -43,17 +43,17 @@ function enviarGarantiaVenda()
 
 function enviarGarantiaCompra()
 {
-    document.getElementById('status_garantia_compra').innerHTML = "<b>Transacao enviada ....</b>";;
+    document.getElementById('status_garantia_compra').innerHTML = "<b>Transacao enviada ....</b>";
         var additionalSettings = 
         {
             value: 200000000
         }; 
     
-        contract.DepositarGarantiaVendedor(additionalSettings)
+        contract.DepositarGarantiaComprador(additionalSettings)
         .then( (tx) => 
         {
             console.log("executePayment - Transaction ", tx);   
-            document.getElementById('status_garantia_compra').innerHTML = "<b>Aguardando resutado ...</b>";;
+            document.getElementById('status_garantia_compra').innerHTML = "<b>Aguardando resutado ...</b>";
             tx.wait()
         .then( (resultFromContract) => 
         {
