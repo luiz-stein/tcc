@@ -18,10 +18,11 @@ function enviarGarantiaVenda()
         .then((tx) => 
         {
             console.log("executePayment - Transaction ", tx);
-            document.getElementById('status_garantia_venda').innerHTML = "<b>Aguardando resutado ...</b>";
+            document.getElementById('label_mensagem_garantia_vendedor').innerHTML = "<b>Aguardando resultado ...</b>";
             tx.wait()
                 .then((resultFromContract) => {
                     console.log("executePayment - the result was ", resultFromContract);
+                
                     document.getElementById('status_garantia_venda').innerHTML = "<b>Valor transferido da Garantia</b>";
                     document.getElementById('id-garantia-vendedor').style.display = 'none';
                 })
@@ -53,7 +54,7 @@ function enviarGarantiaCompra()
         .then( (tx) => 
         {
             console.log("executePayment - Transaction ", tx);   
-            document.getElementById('status_garantia_compra').innerHTML = "<b>Aguardando resutado ...</b>";
+            document.getElementById('label_mensagem_garantia_comprador').innerHTML = "<b>Aguardando resutado ...</b>";
             tx.wait()
         .then( (resultFromContract) => 
         {
@@ -84,7 +85,7 @@ function encerrarContrato()
    contract.EncerrarCompra()
    .then( (resultFromContract) => {
      console.log("encerrarcompra- result is", resultFromContract);
-     document.getElementById('status_encerrado').innerHTML = "<b>Contato Encerrado</b>";
+     document.getElementById('status_encerrado').innerHTML = "<b>Contrato Encerrado</b>";
      document.getElementById('id-encerrado').style.display = 'none';  
    
 })
